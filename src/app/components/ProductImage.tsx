@@ -1,15 +1,20 @@
 'use client'
 
-import { ProductType } from "@/types/ProductType"
+import { ProductFakeType, ProductType } from "@/types/ProductType"
 import Image from "next/image";
 import { useState } from "react";
+
+type ProductFakeImageProps = {
+    product: ProductFakeType;
+    fill?: boolean;
+}
 
 type ProductImageProps = {
     product: ProductType;
     fill?: boolean;
 }
 
-export default function ProductImage ({product, fill}: ProductImageProps){
+export default function ProductImage ({product, fill}: ProductFakeImageProps){
     const [loading, setLoading] = useState(true)
 
     return fill?(
@@ -26,7 +31,7 @@ export default function ProductImage ({product, fill}: ProductImageProps){
         />
     ):(
         <Image 
-            src={product.image}
+            src={product.title}
             width={400}
             height={700}
             alt={product.title}
