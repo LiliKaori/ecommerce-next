@@ -11,7 +11,7 @@ export type ProductFakeType = {
 export type ProductType = {
     id: string;    
     price: number | null;
-    name: string;
+    title: string;
     quantity?: number | 1;
     image: string;
     description: string | null;

@@ -14,6 +14,30 @@ async function getProducts (): Promise<ProductFakeType[]> {
   
 }
 
+// async function getProducts (): Promise<ProductType[]> {
+//   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+//     apiVersion: '2023-10-16',
+//   })
+  
+//   const products= await stripe.products.list()
+//   const formatedProducts = await Promise.all(
+//     products.data.map(async (product)=>{
+//       const price = await stripe. prices.list({
+//         product: product.id,
+//       })
+//       return {
+//         id: product.id,
+//         price: price.data[0].unit_amount,
+//         title: product.name,
+//         image: product.images[0],
+//         description: product.description,
+//         currency: price.data[0].currency,
+//       }
+//     })
+//   )
+//   return formatedProducts
+// }
+
 export default async function Home() {
   
   const products = await getProducts()
