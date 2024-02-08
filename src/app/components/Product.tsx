@@ -1,6 +1,7 @@
 import { ProductFakeType, ProductType } from "@/types/ProductType"
 import ProductImage from "./ProductImage"
 import { formatPrice } from "@/lib/utils"
+import AddCart from "./AddCart"
 
 export type ProductFakeProps = {
     product: ProductFakeType
@@ -21,7 +22,7 @@ export default function Product ({product} : ProductFakeProps){
                 <p className="text-md text-teal-300">{formatPrice(product.price)}</p>
             </div>
             
-            <button className="rounded-md bg-teal-600 text-white px-3.5 py-2.5 text-sm text-center">Adicionar ao Carrinho</button>
+            <AddCart product={product}/>
             
         </div>  
     )

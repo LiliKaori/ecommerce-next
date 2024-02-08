@@ -5,6 +5,7 @@ export type ProductFakeType = {
     description: string | null;
     image: string;
     category: string;
+    quantity?: number | 1;
 }
 
 export type ProductType = {
