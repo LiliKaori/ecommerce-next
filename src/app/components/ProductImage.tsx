@@ -23,7 +23,6 @@ export default function ProductImage ({product, fill}: ProductFakeImageProps){
             src={product.image}
             fill
             alt={product.title}
-            priority={true}
             className={`object-cover ${
                 loading
                     ? 'scale-100 blur-3xl grayscale'
@@ -38,7 +37,6 @@ export default function ProductImage ({product, fill}: ProductFakeImageProps){
             width={400}
             height={700}
             alt={product.title}
-            priority={true}
             className={`object-cover ${
                 loading
                     ? 'scale-100 blur-3xl grayscale'
