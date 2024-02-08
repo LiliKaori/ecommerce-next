@@ -1,5 +1,6 @@
 import { useCartStore } from "@/store"
 import { useEffect } from "react"
+import CheckoutForm from "./CheckoutForm"
 
 export default function Checkout (){
     const cartStore = useCartStore()
@@ -18,7 +19,7 @@ export default function Checkout (){
     }, [cartStore.cart, cartStore.paymentIntent])
     return(
         <div>
-            <p>Checkout</p>
+            <CheckoutForm />
         </div>
     )
 }
