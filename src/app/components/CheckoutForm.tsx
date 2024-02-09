@@ -21,8 +21,8 @@ export default function CheckoutForm (){
     }
     
     return(
-        <div className="">
-            <form onClick={handleSubmit}>                
+        <div className="flex">
+            <form onClick={handleSubmit} className="flex flex-col gap-2">                
                 <div className="flex flex-col w-full">
                     <label className="text-sm">Número do cartão</label>
                     <input placeholder="Digite o número" className="rounded-md py-2 px-3 bg-slate-800"></input>

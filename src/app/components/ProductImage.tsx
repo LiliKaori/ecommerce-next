@@ -14,7 +14,7 @@ type ProductImageProps = {
     fill?: boolean;
 }
 
-export default function ProductImage ({product, fill}: ProductFakeImageProps){
+export default function ProductImage ({product, fill}: ProductImageProps){
     
     const [loading, setLoading] = useState(true)
     

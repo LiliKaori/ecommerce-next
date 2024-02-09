@@ -4,5 +4,5 @@ export const formatPrice =(price:number|null)=>{
     return new Intl.NumberFormat("pt-BR", {
         style:"currency",
         currency: "BRL",
-    }).format(price)
+    }).format(price/100)
 }

@@ -2,6 +2,7 @@
 
 import { formatPrice } from "@/lib/utils"
 import { useCartStore } from "@/store"
+import {motion} from 'framer-motion'
 import Image from "next/image"
 import CheckoutButton from "./CheckoutButton"
 import Checkout from "./Checkout"
@@ -14,7 +15,10 @@ export default function CartDrawer (){
     },0)
 
     return (
-        <div
+        <motion.div
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            exit={{opacity:0}}
             onClick={()=> useStore.toggleCart()}
             className="bg-black/25 fixed left-0 top-0 w-full h-screen z-50"
         >
@@ -29,7 +33,12 @@ export default function CartDrawer (){
                 </div>
                 
                 {useStore.cart.map((item)=>(
-                    <div key={item.id} className="flex gap-4 py-4">
+                    <motion.div 
+                        animate={{scale:1, rotateZ:0, opacity: 0.75}}
+                        initial={{scale:0.5, rotateZ:-10, opacity: 0}}
+                        exit={{scale:0.5, rotateZ:-10, opacity: 0}}
+                        key={item.id} className="flex gap-4 py-4"
+                    >
                         <Image 
                             src={item.image}
                             alt={item.title}
@@ -47,7 +56,7 @@ export default function CartDrawer (){
                         </div>
 
                         
-                    </div>
+                    </motion.div>
                 ))}
                 
                 {useStore.cart.length >0 && useStore.onCheckout === 'cart' && (
@@ -58,7 +67,10 @@ export default function CartDrawer (){
                     <Checkout />
 
                 )}
+                {useStore.onCheckout === 'checkout' && (
+                    <button onClick={()=> useStore.setCheckout('cart')} className="w-full rounded-md bg-teal-600 py-2 mt-2">Voltar ao carrinho</button>
+                )}
             </div>
-        </div>
+        </motion.div>
     )
 }

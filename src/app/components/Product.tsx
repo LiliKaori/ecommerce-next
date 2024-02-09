@@ -12,7 +12,7 @@ export type ProductProps = {
     product: ProductType
 }
 
-export default function Product ({product} : ProductFakeProps){
+export default function Product ({product} : ProductProps){
     return(
         <Link href={`/product/${product.id}`}>
             <div className="flex flex-col shadow-lg h-96 bg-slate-800 px-5 text-gray-300">

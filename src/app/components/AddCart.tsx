@@ -1,9 +1,9 @@
 'use client'
 
 import { useCartStore } from "@/store"
-import { ProductFakeType } from "@/types/ProductType"
+import { ProductFakeType, ProductType } from "@/types/ProductType"
 
-export default function AddCart ({product}:{product:ProductFakeType}){
+export default function AddCart ({product}:{product:ProductType}){
     const { addProduct } = useCartStore()
     return (
         <button 

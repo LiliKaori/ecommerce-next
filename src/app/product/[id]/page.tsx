@@ -2,8 +2,9 @@
 
 import AddCart from "@/app/components/AddCart";
 import ProductImage from "@/app/components/ProductImage";
+import { stripe } from "@/lib/stripe";
 import { formatPrice } from "@/lib/utils";
-import { ProductFakeType } from "@/types/ProductType";
+import { ProductFakeType, ProductType } from "@/types/ProductType";
 import Stripe from "stripe";
 
 type ProductPageProps ={
@@ -12,40 +13,38 @@ type ProductPageProps ={
     }
 }
 
-async function getProduct(id: string): Promise<ProductFakeType>{
-    const response = await fetch('https://fakestoreapi.com/products')
+// async function getProduct(id: string): Promise<ProductType>{
+//     const response = await fetch('https://fakestoreapi.com/products')
   
-    if(!response.ok){
-        throw new Error('Failed to fetch data')
-    }
-
-    const products = await response.json()
-    
-    const findProduct = products.filter((item:ProductFakeType)=> item.id == id)
-    
-    return findProduct[0]
-}
-
-// async function getProduct(id:string){
-//     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-//         apiVersion: '2023-10-16'
-//     })
-//     const product = await stripe.products.retrieve(id)
-//     const price = await stripe.prices.list({
-//         product: product.id
-//     })
-
-//     return {
-//         id: product.id,
-//         price: price.data[0].unit_amount,
-//         name: product.name,
-//         image: product.images[0],
-//         description: product.description,
+//     if(!response.ok){
+//         throw new Error('Failed to fetch data')
 //     }
+
+//     const products = await response.json()
+    
+//     const findProduct = products.filter((item:ProductType)=> item.id == id)
+    
+//     return findProduct[0]
 // }
 
+async function getProduct(id:string){
+    
+    const product = await stripe.products.retrieve(id)
+    const price = await stripe.prices.list({
+        product: product.id
+    })
+
+    return {
+        id: product.id,
+        price: price.data[0].unit_amount,
+        title: product.name,
+        image: product.images[0],
+        description: product.description,
+    }
+}
+
 export default async function ProductPage({ params:{id} }: ProductPageProps){
-    const product: ProductFakeType = await getProduct(id)
+    const product: ProductType = await getProduct(id)
     
     return (
         <div className="flex flex-col md:flex-row items-center max-w-7xl mx-auto gap-8 p-10">

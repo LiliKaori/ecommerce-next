@@ -3,9 +3,9 @@ import { ProductFakeType, ProductType } from "./types/ProductType"
 import { persist } from "zustand/middleware";
 
 type CartState = {
-    cart: ProductFakeType[];
-    addProduct: (product: ProductFakeType) => void;
-    removeProduct: (product: ProductFakeType) => void;
+    cart: ProductType[];
+    addProduct: (product: ProductType) => void;
+    removeProduct: (product: ProductType) => void;
     isOpen: boolean;
     toggleCart: ()=>void;
     onCheckout: string;

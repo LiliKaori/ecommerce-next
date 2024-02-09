@@ -17,7 +17,7 @@ export default function Cart () {
                 </span>
             </div>
 
-            {!useStore.isOpen && (
+            {useStore.isOpen && (
                 <CartDrawer />
             )}
             
