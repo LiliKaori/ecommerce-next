@@ -6,6 +6,7 @@ import {motion} from 'framer-motion'
 import Image from "next/image"
 import CheckoutButton from "./CheckoutButton"
 import Checkout from "./Checkout"
+import OrderCompleted from "./OrderCompleted"
 
 export default function CartDrawer (){
     const useStore = useCartStore()
@@ -69,6 +70,10 @@ export default function CartDrawer (){
                 )}
                 {useStore.onCheckout === 'checkout' && (
                     <button onClick={()=> useStore.setCheckout('cart')} className="w-full rounded-md bg-teal-600 py-2 mt-2">Voltar ao carrinho</button>
+                )}
+
+                {useStore.onCheckout === 'success' && (
+                    <OrderCompleted />
                 )}
             </div>
         </motion.div>

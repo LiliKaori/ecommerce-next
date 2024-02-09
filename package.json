@@ -12,6 +12,7 @@
     "@clerk/localizations": "^1.26.14",
     "@clerk/nextjs": "^4.29.6",
     "@phosphor-icons/react": "^2.0.15",
+    "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.4.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.3",
