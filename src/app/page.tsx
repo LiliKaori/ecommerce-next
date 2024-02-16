@@ -1,5 +1,3 @@
-import { ProductFakeType, ProductType } from "@/types/ProductType"
-import Product from "./components/Product"
 import { fetchProducts} from "./actions";
 import InfiniteScroll from "./components/InfiniteScroll";
 
